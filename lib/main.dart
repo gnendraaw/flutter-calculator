@@ -45,88 +45,108 @@ class MyHomePage extends StatelessWidget {
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: 'C'),
+                  text: 'C',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '+/-'),
+                  text: '+/-',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '%'),
+                  text: '%',
+                  onTap: () {}),
               CalculatorButton.Icon(
                 backgroundColor: Theme.of(context).primaryColorDark,
                 foregroundColor: Theme.of(context).primaryColorLight,
                 text: 'Backspace',
                 icon: Icons.backspace,
+                onTap: () {},
               ),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '7'),
+                  text: '7',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '8'),
+                  text: '8',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '9'),
+                  text: '9',
+                  onTap: () {}),
               CalculatorButton(
                 backgroundColor: Theme.of(context).primaryColorDark,
                 foregroundColor: Theme.of(context).primaryColorLight,
                 text: '/',
+                onTap: () {},
               ),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '4'),
+                  text: '4',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '5'),
+                  text: '5',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '6'),
+                  text: '6',
+                  onTap: () {}),
               CalculatorButton(
                 backgroundColor: Theme.of(context).primaryColorDark,
                 foregroundColor: Theme.of(context).primaryColorLight,
                 text: 'x',
+                onTap: () {},
               ),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '1'),
+                  text: '1',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '2'),
+                  text: '2',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '3'),
+                  text: '3',
+                  onTap: () {}),
               CalculatorButton(
                 backgroundColor: Theme.of(context).primaryColorDark,
                 foregroundColor: Theme.of(context).primaryColorLight,
                 text: '-',
+                onTap: () {},
               ),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '0'),
+                  text: '0',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '.'),
+                  text: '.',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorLight,
                   foregroundColor: Theme.of(context).primaryColorDark,
-                  text: '='),
+                  text: '=',
+                  onTap: () {}),
               CalculatorButton(
                   backgroundColor: Theme.of(context).primaryColorDark,
                   foregroundColor: Theme.of(context).primaryColorLight,
-                  text: '+'),
+                  text: '+',
+                  onTap: () {}),
             ],
           ),
         ],
@@ -139,12 +159,14 @@ class CalculatorButton extends StatelessWidget {
   final Color backgroundColor;
   final Color foregroundColor;
   final String text;
+  final Function() onTap;
   IconData? icon;
 
   CalculatorButton({
     required this.backgroundColor,
     required this.foregroundColor,
     required this.text,
+    required this.onTap,
   });
 
   CalculatorButton.Icon({
@@ -152,25 +174,29 @@ class CalculatorButton extends StatelessWidget {
     required this.foregroundColor,
     required this.icon,
     required this.text,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: backgroundColor,
-      child: Center(
-        child: icon == null
-            ? Text(
-                text,
-                style: Theme.of(context)
-                    .textTheme
-                    .headline4!
-                    .copyWith(color: foregroundColor),
-              )
-            : Icon(
-                icon,
-                color: foregroundColor,
-              ),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        color: backgroundColor,
+        child: Center(
+          child: icon == null
+              ? Text(
+                  text,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4!
+                      .copyWith(color: foregroundColor),
+                )
+              : Icon(
+                  icon,
+                  color: foregroundColor,
+                ),
+        ),
       ),
     );
   }
